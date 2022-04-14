@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Mono&family=Ubuntu:ital,wght@0,400;0,700;1,300&display=swap');
+
+
+.logoutLink{
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 1300px;
+    margin-top: -100px;
+    
+}
+
+.Freelance{
+    margin-top: 200px;
+    margin-left: 150px;
+}
+
+.nextBtn{
+    width: 55px;
+    height: 50px;
+    margin-top: 30px;
+    margin-left: 960px;
+    
+}
