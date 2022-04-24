@@ -28,7 +28,7 @@
                 <input type="text" id="user_id" name="user_id" class="input-field" placeholder="User Id" required>
                 <input type="password" id = "user_password" name="user_password" class="input-field" placeholder="Enter Password" required>
                 <!--<div><input type="checkbox" class="checkbox"><span> Remember Password</span></div>-->
-                <button type="submit" name = "submit" class="submit-btn">Log in</button>
+                <button type="submit" name = "logInBtn" class="submit-btn">Log in</button>
     
             </form>
 
@@ -36,15 +36,12 @@
     
             <form id="register" class="input-group" method = "POST">    
                 <input type="text" name="first_name" id="first_name" class="input-field" placeholder="first name" required>
-                <input type="text" name="last_name" id="last_name" class="input-field" placeholder="last name" required>
+                <input type="text" name="last_name" id="last_name" class="input-field" placeholder="last name">
                 <input type="text" name = "user_name" id="user_name" class="input-field" placeholder="User Name" required>
                 <input type="email" name ="email" id="email" class="input-field" placeholder="Email" required>
                 <input type="password" name="password" id="password" class="input-field" placeholder="Enter Password" required>
                 <!--<div><input type="checkbox" class="checkbox"><span> Remember Password</span></div>-->
-                <button type="submit" name="submit_btn" class="submit-btn">Register</button>
-                
-                
-
+                <button type="submit" name="submit_btn" class="submit-btn">Register</button> 
             </form>  
         </div>
         
@@ -79,26 +76,49 @@ if(isset($_POST['submit_btn'])){
     $fname = $_POST['first_name'];
     $lname = $_POST['last_name'];
     $uname = $_POST['user_name'];
-    $password = $_POST['user_password'];
-
-    // verfying the log in details to see if they match 
-    $sql = "select * from ITSpecialist where SpecialistID ='".$uname. "'AND Specialist_password ='".$password."'limit 1";
-    $result = (mysqli_query($conn,$sql));
-
-    if(mysqli_num_rows($result) > 0){
-        header("location: " )
-    }
-}
-
-if(isset($_POST['submit_btn'])){
-    $uname = $_POST['user_id'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    mysqli_query($conn,"insert into ")
+    mysqli_query($conn,"insert into Customer(Fname,Lname,Uname,Customer_email,Customer_password) values ('$fname','$lname','$uname','$email','$password')");
 
 
+    
 }
+
+if(isset($_POST['logInBtn'])){
+    $uname1 = $_POST['user_name'];
+    $pswrd = $_POST['password'];
+
+    //checking if log in details are that of a developer or an employer
+    //redirects users to dashboard based on data inputs. 
+
+    $sql_C = "select * from Customer where Uname ='".$uname."'AND Customer_password ='".$pswrd."'limit 1";
+    $sql_D = "select * from Developer where Uname ='".$uname."'AND Dev_password ='".$pswrd."'limit 1";
+
+    $result = mysqli_query($conn, $sql_D);
+    $result1 = mysqli_query($conn,$sql_C);
+
+    if(mysqli_num_rows($result1) > 0){
+        header("location: ");
+
+        exit();
+    }
+    if(mysqli_num_rows($result) > 0){
+        header("location: ");
+        exit();
+
+    } else{
+        echo "<script language = 'javascript'>;
+        alert('Incorrect details');
+        </script>";
+        exit();
+
+    }
+
+    
+}
+
+
 
 ?>
 </body>

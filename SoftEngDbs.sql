@@ -14,17 +14,23 @@ Gender char(1), /* 'M', 'F' */
 check(gender='M' or gender='F')
 );
 
-create table  ITSpecialist(
-SpecialistID int unsigned ,
-Specialist_email varchar(50),
-Specialist_password varchar(30),
-ITCategory varchar(40) primary key,
+create table  Dev(
+DevID int unsigned ,
+Fname varchar(40) not null,
+Lname varchar(40),
+Uname varchar(60),
+Dev_email varchar(50),
+Dev_password varchar(30),
+Category varchar(40) primary key,
 Bio varchar(200),
 foreign key (SpecialistID) references Person(personID) on update cascade on delete restrict
 );
 
 create table Customer(
 CustomerID int unsigned primary key,
+Fname varchar(60) not null,
+Lname varchar(60),
+Uname varchar(60),
 Customer_email varchar(50),
 Customer_password varchar(20),
 foreign key (CustomerID) references
