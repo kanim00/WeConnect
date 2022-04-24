@@ -67,30 +67,7 @@
     }
 </script>
 
-<?php
-    if(isset($_POST['submit'])){
-        $uname = $_POST['user_id'];
-        $password = $_POST['user_password'];
 
-        // verfying the log in details to see if they match 
-        $sql = "select * from ITSpecialist where SpecialistID ='".$uname. "'AND Specialist_password ='".$password."'limit 1";
-        $result = (mysqli_query($conn,$sql));
-
-        if(mysqli_num_rows($result) > 0){
-            header("location: " )
-        }
-    }
-
-    if(isset($_POST['submit_btn'])){
-        $uname = $_POST['user_id'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        mysqli_query($conn,"insert into ")
-
-
-    }
-?>
 
 
 
